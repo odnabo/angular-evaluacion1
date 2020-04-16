@@ -1,0 +1,60 @@
+<div class="container"> 
+    <h3>Lista</h3>
+    <br>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Item</th>
+            <th scope="col">Precio</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <td><img src="{{ producto.url }}" style="max-height: 80px;"></td>
+            <td scope="row">{{ producto.item }}</td>
+            <td>{{ producto.precio }}</td>
+            <td> 
+                <button class="btn btn-primary btn-sm" (click)="agregar(producto)">Agregar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+   
+    <div>
+        <br>
+        <h3>Carro</h3>
+        <br>
+        <table *ngIf="borrando" class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">Item</th>
+                <th scope="col">Precio</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of carrito; let i = index" [attr.id]="producto.codigo">
+                <td><img src="{{ producto.url }}" style="max-height: 80px;"></td>
+                <td scope="row">{{ producto.item }}</td>
+                <td>{{ producto.precio }}</td>
+                 
+                    <button class="btn btn-danger btn-sm" (click)="eliminar(i)">Eliminar</button>
+                
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div>
+        <br>
+        <h3>Total: $ {{producto.precio}}</h3>
+        <br>
+    </div>
+</div>
+
+
